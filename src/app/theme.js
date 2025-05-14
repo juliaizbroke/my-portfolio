@@ -1,5 +1,7 @@
 import { createTheme } from '@mui/material/styles';
-import '@fontsource/roboto-mono';
+import '@fontsource/roboto-mono/400.css';
+import '@fontsource/roboto-mono/500.css';
+import '@fontsource/roboto-mono/700.css';
 
 const theme = createTheme({
   palette: {
@@ -19,70 +21,32 @@ const theme = createTheme({
     fontFamily: '"Roboto Mono", monospace',
     h1: {
       fontWeight: 700,
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
     },
     h2: {
       fontWeight: 700,
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
     },
     h3: {
-      fontWeight: 600,
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
+      fontWeight: 500,
     },
     h4: {
-      fontWeight: 600,
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
+      fontWeight: 500,
     },
     h5: {
-      fontWeight: 600,
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
+      fontWeight: 500,
     },
     h6: {
-      fontWeight: 600,
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
-    },
-    body1: {
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
-    },
-    body2: {
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
+      fontWeight: 500,
     },
     button: {
-      fontFamily: '"Roboto Mono", monospace',
-      letterSpacing: '0.5px',
+      textTransform: 'none',
+      fontWeight: 500,
     },
   },
   components: {
-    MuiButton: {
+    MuiCssBaseline: {
       styleOverrides: {
-        root: {
-          textTransform: 'none',
-          borderRadius: 8,
-          fontFamily: '"Roboto Mono", monospace',
-          letterSpacing: '0.5px',
-        },
-      },
-    },
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: 'none',
-        },
-      },
-    },
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          fontFamily: '"Roboto Mono", monospace',
-          letterSpacing: '0.5px',
+        body: {
+          scrollBehavior: 'smooth',
         },
       },
     },
