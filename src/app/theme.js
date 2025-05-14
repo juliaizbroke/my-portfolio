@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import '@fontsource/roboto-mono';
 
 const theme = createTheme({
   palette: {
@@ -15,24 +16,48 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Roboto Mono", monospace',
     h1: {
       fontWeight: 700,
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
     },
     h2: {
       fontWeight: 700,
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
     },
     h3: {
       fontWeight: 600,
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
     },
     h4: {
       fontWeight: 600,
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
     },
     h5: {
       fontWeight: 600,
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
     },
     h6: {
       fontWeight: 600,
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
+    },
+    body1: {
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
+    },
+    body2: {
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
+    },
+    button: {
+      fontFamily: '"Roboto Mono", monospace',
+      letterSpacing: '0.5px',
     },
   },
   components: {
@@ -41,6 +66,8 @@ const theme = createTheme({
         root: {
           textTransform: 'none',
           borderRadius: 8,
+          fontFamily: '"Roboto Mono", monospace',
+          letterSpacing: '0.5px',
         },
       },
     },
@@ -48,6 +75,14 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: '"Roboto Mono", monospace',
+          letterSpacing: '0.5px',
         },
       },
     },

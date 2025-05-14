@@ -2,8 +2,48 @@
 
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { AppBar, Toolbar, Typography, Container, Box, Link } from '@mui/material';
+import { AppBar, Toolbar, Typography, Container, Box, Link, IconButton } from '@mui/material';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import theme from './theme';
+import { useCallback } from 'react';
+
+// Easing function for smooth animation
+const easeInOutCubic = (t) => {
+  return t < 0.5
+    ? 4 * t * t * t
+    : 1 - Math.pow(-2 * t + 2, 3) / 2;
+};
+
+const handleSmoothScroll = (e, targetId) => {
+  e.preventDefault();
+  const targetElement = document.getElementById(targetId.toLowerCase());
+  if (targetElement) {
+    const headerOffset = 80;
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const startPosition = window.pageYOffset;
+    const distance = offsetPosition - startPosition;
+    const duration = 1200; // Longer duration for smoother scroll
+    let startTime = null;
+
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const easeProgress = easeInOutCubic(progress);
+      
+      window.scrollTo(0, startPosition + distance * easeProgress);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  }
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -18,22 +58,25 @@ export default function RootLayout({ children }) {
               opacity: "80%",
               backdropFilter: 'blur(8px)',
               borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              zIndex: 1000,
             }}
           >
             <Container maxWidth="lg">
               <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <Typography variant="h6" sx={{ fontWeight: 500 }}>
+                <Typography onClick={(e)=>handleSmoothScroll(e,"home")} variant="h6" sx={{ fontWeight: 500, cursor:"pointer" }}>
                   Julia
                 </Typography>
-                <Box component="nav" sx={{ display: 'flex', gap: 4 }}>
+                <Box sx={{ display: 'flex', gap: 4 }}>
                   {['About', 'Education', 'Skills', 'Projects', 'Contact'].map((item) => (
                     <Link
                       key={item}
                       href={`#${item.toLowerCase()}`}
+                      onClick={(e) => handleSmoothScroll(e, item.toLowerCase())}
                       sx={{
                         color: 'white',
                         textDecoration: 'none',
                         position: 'relative',
+                        cursor: 'pointer',
                         '&::after': {
                           content: '""',
                           position: 'absolute',
@@ -67,25 +110,46 @@ export default function RootLayout({ children }) {
             }}
           >
             <Container maxWidth="lg">
-              <Typography variant="body2" align="center" sx={{ mb: 2 }}>
+              <Typography variant="body2" align="center" sx={{ mb: 2, color: theme.palette.grey[400] }}>
                 © {new Date().getFullYear()} Julia. All rights reserved.
               </Typography>
-              <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4 }}>
-                {['LinkedIn', 'GitHub', 'Twitter'].map((platform) => (
-                  <Link
-                    key={platform}
-                    href="#"
-                    sx={{
-                      color: theme.palette.grey[400],
-                      textDecoration: 'none',
-                      '&:hover': {
-                        color: theme.palette.primary.main,
-                      },
-                    }}
-                  >
-                    {platform}
-                  </Link>
-                ))}
+              <Box sx={{ 
+                display: 'flex', 
+                justifyContent: 'center', 
+                gap: 3,
+                '& .MuiIconButton-root': {
+                  color: theme.palette.grey[400],
+                  transition: 'all 0.3s ease-in-out',
+                  '&:hover': {
+                    color: theme.palette.primary.main,
+                    transform: 'translateY(-2px)',
+                  },
+                },
+              }}>
+                <IconButton
+                  href="#"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  size="medium"
+                >
+                  <LinkedInIcon />
+                </IconButton>
+                <IconButton
+                  href="#"
+                  target="_blank"
+                  aria-label="GitHub"
+                  size="medium"
+                >
+                  <GitHubIcon />
+                </IconButton>
+                <IconButton
+                  href="#"
+                  target="_blank"
+                  aria-label="Twitter"
+                  size="medium"
+                >
+                  <TwitterIcon />
+                </IconButton>
               </Box>
             </Container>
           </Box>

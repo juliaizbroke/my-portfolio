@@ -15,7 +15,7 @@ const Projects = () => {
     },
   };
 
-  const cardVariants = {
+  const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -28,26 +28,26 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'E-commerce Platform',
-      description: 'A full-stack e-commerce platform built with React and Node.js',
-      image: '/project1.jpg',
-      technologies: ['React', 'Node.js', 'MongoDB'],
-      liveLink: '#',
-      githubLink: '#',
+      title: 'Movie App',
+      description: 'A platform to browse the trending movie and add your favourites in your watchlist.',
+      image: '/movie-app.png',
+      technologies: ['React', 'Next.js', 'TypeScript', 'DaisyUI'],
+      liveLink: 'https://moive-app-project.vercel.app/home',
+      githubLink: 'https://github.com/juliaizbroke/moive_app',
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates',
-      image: '/project2.jpg',
-      technologies: ['React', 'Firebase', 'Material-UI'],
-      liveLink: '#',
-      githubLink: '#',
+      title: 'FitHub',
+      description: 'A platform for better and healthy lifestyle by getting tailored advices from professionals.',
+      image: '/fithub.png',
+      technologies: ['React','Next.js', 'NeonDB', 'Material-UI'],
+      liveLink: 'https://fit-hub-psi.vercel.app',
+      githubLink: 'https://github.com/juliaizbroke/FitHub',
     },
     {
-      title: 'Weather Dashboard',
-      description: 'A weather dashboard that displays current and forecasted weather data',
+      title: 'Heavenly Travels',
+      description: 'A small mockup platform of trip.com.',
       image: '/project3.jpg',
-      technologies: ['JavaScript', 'OpenWeather API', 'Chart.js'],
+      technologies: ['JavaScript', 'MongoDB'],
       liveLink: '#',
       githubLink: '#',
     },
@@ -58,34 +58,61 @@ const Projects = () => {
       id="projects"
       sx={{
         py: 8,
-        background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)',
-        color: 'white',
+        background: 'linear-gradient(45deg, #2d2d2d 0%, rgb(25, 14, 20) 100%)',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      {/* Background decorative elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.1,
+          background: `radial-gradient(circle at 80% 20%, ${theme.palette.primary.main} 0%, transparent 50%),
+                      radial-gradient(circle at 20% 80%, ${theme.palette.secondary.main} 0%, transparent 50%)`,
+          pointerEvents: 'none',
+        }}
+      />
+
       <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <Box sx={{ mb: 6 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                fontWeight: 700,
+                color: '#FF6B6B',
+                mr: 2,
+              }}
+            >
+              #Projects
+            </Typography>
+            <Box
+              sx={{
+                flex: 1,
+                height: '2px',
+                background: '#FF6B6B',
+                opacity: 0.5,
+                borderRadius: '2px',
+              }}
+            />
+          </Box>
           <Typography
-            variant="h2"
+            variant="h3"
             sx={{
-              textAlign: 'center',
-              mb: 6,
-              fontSize: { xs: '2rem', md: '3rem' },
-              fontWeight: 700,
-              background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-              backgroundClip: 'text',
-              textFillColor: 'transparent',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              color: theme.palette.grey[300],
+              ml: 2,
             }}
           >
-            Projects
+            Featured Works & Applications
           </Typography>
-        </motion.div>
+        </Box>
 
         <motion.div
           variants={containerVariants}
@@ -93,129 +120,147 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Grid container spacing={4}>
+          <Grid container spacing={3} justifyContent="flex-start">
             {projects.map((project, index) => (
-              <Grid item xs={12} md={4} key={project.title}>
-                <motion.div
-                  variants={cardVariants}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div variants={itemVariants}>
                   <Card
                     sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      background: 'rgba(255, 255, 255, 0.05)',
+                      width: '320px',
+                      height: '420px',
+                      mx: 'auto',
+                      background: 'rgba(255, 255, 255, 0.03)',
                       backdropFilter: 'blur(10px)',
                       borderRadius: 2,
                       border: '1px solid rgba(255, 255, 255, 0.1)',
                       transition: 'all 0.3s ease-in-out',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
                       '&:hover': {
                         transform: 'translateY(-5px)',
-                        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)',
+                        background: 'rgba(255, 255, 255, 0.05)',
+                        '&::before': {
+                          transform: 'scale(1)',
+                          opacity: 0.1,
+                        },
+                      },
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                        opacity: 0,
+                        transition: 'all 0.3s ease-in-out',
+                        transform: 'scale(0.8)',
+                        zIndex: 0,
                       },
                     }}
                   >
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <CardMedia
-                        component="img"
-                        height="200"
-                        image={project.image}
-                        alt={project.title}
-                        sx={{ objectFit: 'cover' }}
-                      />
-                    </motion.div>
-                    <CardContent>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
+                    <CardMedia
+                      component="img"
+                      height="180"
+                      image={project.image}
+                      alt={project.title}
+                      sx={{ 
+                        objectFit: 'cover',
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                      }}
+                    />
+                    <CardContent sx={{ 
+                      flexGrow: 1, 
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      position: 'relative',
+                      zIndex: 1,
+                    }}>
+                      <Typography
+                        variant="h5"
+                        component="h2"
+                        sx={{ 
+                          color: theme.palette.grey[100],
+                          fontWeight: 600,
+                          fontSize: { xs: '0.9rem', md: '1rem' },
+                          mb: 1,
+                          lineHeight: 1.4,
+                        }}
                       >
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          component="h2"
-                          sx={{ color: theme.palette.primary.main, fontWeight: 600 }}
-                        >
-                          {project.title}
-                        </Typography>
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
+                        {project.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ 
+                          color: theme.palette.grey[400],
+                          fontSize: { xs: '0.8rem', md: '0.85rem' },
+                          mb: 2,
+                          flexGrow: 1,
+                        }}
                       >
-                        <Typography
-                          variant="body2"
-                          sx={{ color: theme.palette.grey[300], mb: 2 }}
-                        >
-                          {project.description}
-                        </Typography>
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
-                        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                          {project.technologies.map((tech) => (
-                            <motion.div
-                              key={tech}
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                              <Typography
-                                variant="caption"
-                                sx={{
-                                  px: 1,
-                                  py: 0.5,
-                                  borderRadius: 1,
-                                  backgroundColor: 'rgba(78, 205, 196, 0.1)',
-                                  color: theme.palette.primary.main,
-                                }}
-                              >
-                                {tech}
-                              </Typography>
-                            </motion.div>
-                          ))}
-                        </Box>
-                      </motion.div>
+                        {project.description}
+                      </Typography>
+                      <Box sx={{ 
+                        display: 'flex', 
+                        gap: 1, 
+                        flexWrap: 'wrap',
+                        mb: 2,
+                      }}>
+                        {project.technologies.map((tech) => (
+                          <Typography
+                            key={tech}
+                            variant="caption"
+                            sx={{
+                              px: 1,
+                              py: 0.5,
+                              borderRadius: 1,
+                              backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                              color: theme.palette.primary.main,
+                              fontSize: { xs: '0.7rem', md: '0.75rem' },
+                            }}
+                          >
+                            {tech}
+                          </Typography>
+                        ))}
+                      </Box>
                     </CardContent>
-                    <CardActions>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button
-                          size="small"
-                          href={project.liveLink}
-                          target="_blank"
-                          sx={{
-                            color: theme.palette.primary.main,
-                            '&:hover': {
-                              backgroundColor: 'rgba(78, 205, 196, 0.1)',
-                            },
-                          }}
-                        >
-                          Live Demo
-                        </Button>
-                      </motion.div>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button
-                          size="small"
-                          href={project.githubLink}
-                          target="_blank"
-                          sx={{
-                            color: theme.palette.primary.main,
-                            '&:hover': {
-                              backgroundColor: 'rgba(78, 205, 196, 0.1)',
-                            },
-                          }}
-                        >
-                          GitHub
-                        </Button>
-                      </motion.div>
+                    <CardActions sx={{ 
+                      position: 'relative',
+                      zIndex: 1,
+                      borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                      p: 2,
+                      justifyContent: 'space-between',
+                    }}>
+                      <Button
+                        size="small"
+                        href={project.liveLink}
+                        target="_blank"
+                        sx={{
+                          color: theme.palette.primary.main,
+                          fontSize: { xs: '0.75rem', md: '0.8rem' },
+                          '&:hover': {
+                            backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                          },
+                        }}
+                      >
+                        Live Demo
+                      </Button>
+                      <Button
+                        size="small"
+                        href={project.githubLink}
+                        target="_blank"
+                        sx={{
+                          color: theme.palette.primary.main,
+                          fontSize: { xs: '0.75rem', md: '0.8rem' },
+                          '&:hover': {
+                            backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                          },
+                        }}
+                      >
+                        GitHub
+                      </Button>
                     </CardActions>
                   </Card>
                 </motion.div>

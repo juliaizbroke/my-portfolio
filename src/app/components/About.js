@@ -1,4 +1,4 @@
-import { Box, Typography, Container, Paper } from '@mui/material';
+import { Box, Typography, Container, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 
@@ -26,94 +26,88 @@ const About = () => {
     },
   };
 
+
   return (
     <Box
       id="about"
       sx={{
         py: 8,
-        background: "linear-gradient(225deg, #2d2d2d  0%, rgb(25, 14, 20) 100%)",
+        background: "linear-gradient(225deg, #2d2d2d 0%, rgb(25, 14, 20) 100%)",
         color: 'white',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              textAlign: 'center',
-              mb: 6,
-              fontSize: { xs: '1.5rem', md: '2rem' },
-              fontWeight: 700,
-              background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
-              backgroundClip: 'text',
-              textFillColor: 'transparent',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            About Me
-          </Typography>
-        </motion.div>
+      {/* Background decorative elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.1,
+          background: `radial-gradient(circle at 20% 20%, ${theme.palette.primary.main} 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, ${theme.palette.secondary.main} 0%, transparent 50%)`,
+          pointerEvents: 'none',
+        }}
+      />
 
+      <Container maxWidth="lg">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.div variants={itemVariants}>
-            <Paper
-              elevation={3}
-              sx={{
-                p: 6,
-                background: 'rgba(255, 255, 255, 0.05)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: 2,
-                border: '1px solid rgba(201, 73, 150, 0.1)',
-                transition: 'transform 0.3s ease-in-out',
-                '&:hover': {
-                  transform: 'translateY(-5px)',
-                },
-              }}
-            >
+          <Grid container spacing={4} alignItems="center">
+            {/* Left side - Introduction */}
+            <Grid item xs={12} md={6}>
               <motion.div variants={itemVariants}>
+                <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      fontSize: { xs: '1.5rem', md: '2rem' },
+                      fontWeight: 700,
+                      background: '#FF6B6B',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      mr: 2,
+                    }}
+                  >
+                    #About Me
+                  </Typography>
+                  <Box
+                    sx={{
+                      flex: 1,
+                      height: '2px',
+                      background:"#FF6B6B",
+                      opacity: 0.5,
+                      borderRadius: '2px',
+                    }}
+                  />
+                </Box>
+                
                 <Typography
                   variant="body1"
                   sx={{
-                    fontSize: { xs: '12px', md: '17px' },
+                    fontSize: { xs: '0.9rem', md: '1rem' },
                     lineHeight: 1.8,
                     color: theme.palette.grey[300],
                     mb: 3,
                   }}
                 >
-                  I am a passionate full-stack developer with a strong foundation in both
-                  front-end and back-end technologies. My journey in web development
-                  started with a curiosity about how websites work, which led me to
-                  explore various technologies and frameworks.
+                  My journey in web development started with a curiosity about how websites work, 
+                  which led me to explore various technologies and frameworks. I specialize in 
+                  creating responsive, user-friendly applications using modern technologies.
                 </Typography>
               </motion.div>
-              <motion.div variants={itemVariants}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.1rem' },
-                    lineHeight: 1.8,
-                    color: theme.palette.grey[300],
-                  }}
-                >
-                  I specialize in creating responsive, user-friendly applications using
-                  modern technologies like React, Node.js, and TypeScript. I believe in
-                  writing clean, maintainable code and staying up-to-date with the
-                  latest industry trends and best practices.
-                </Typography>
-              </motion.div>
-            </Paper>
-          </motion.div>
+            </Grid>
+            
+          </Grid>
         </motion.div>
       </Container>
     </Box>
