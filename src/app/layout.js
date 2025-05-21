@@ -11,6 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import MailIcon from '@mui/icons-material/Mail';
+import CodeIcon from '@mui/icons-material/Code';
 import theme from './theme';
 
 const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
@@ -79,7 +80,7 @@ export default function RootLayout({ children }) {
                 <Typography
                   onClick={(e) => handleSmoothScroll(e, "home")}
                   variant="h6"
-                  sx={{ fontWeight: 500, cursor: "pointer" }}
+                  sx={{ fontWeight: 500, cursor: "pointer", alignItems: 'center', display: 'flex', gap: 1 }}
                 >
                   Julia
                 </Typography>

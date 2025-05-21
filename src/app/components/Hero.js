@@ -147,7 +147,7 @@ const Hero = () => {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                JULIA
+                {"<Julia/>"}
               </Typography>
             </motion.div>
 
