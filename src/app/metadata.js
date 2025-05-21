@@ -1,4 +1,7 @@
 export const metadata = {
-  title: 'Professional Portfolio',
-  description: 'A professional portfolio showcasing my skills and projects',
+  title: 'Thet Myat Noe Thwin',
+  description: 'Portfolio',
+  icons: {
+    icon: '/heart.ico',
+  },
 }; 

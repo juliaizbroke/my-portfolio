@@ -11,7 +11,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import MailIcon from '@mui/icons-material/Mail';
-import CodeIcon from '@mui/icons-material/Code';
 import theme from './theme';
 
 const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
@@ -62,6 +61,13 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Julia</title>
+        <link rel="icon" href="/heart.ico" />
+        <meta name="description" content="Julia's Portfolio" />
+        <meta name="theme-color" content="#000000" />
+      </head>
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
