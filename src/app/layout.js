@@ -1,20 +1,23 @@
 'use client';
 
+import { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { AppBar, Toolbar, Typography, Container, Box, Link, IconButton } from '@mui/material';
+import {
+  AppBar, Toolbar, Typography, Container, Box, Link,
+  IconButton, Menu, MenuItem
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import MailIcon from '@mui/icons-material/Mail';
 import theme from './theme';
-import { useCallback } from 'react';
 
-// Easing function for smooth animation
-const easeInOutCubic = (t) => {
-  return t < 0.5
-    ? 4 * t * t * t
-    : 1 - Math.pow(-2 * t + 2, 3) / 2;
-};
+const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
+
+const easeInOutCubic = (t) => t < 0.5
+  ? 4 * t * t * t
+  : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
 const handleSmoothScroll = (e, targetId) => {
   e.preventDefault();
@@ -25,7 +28,7 @@ const handleSmoothScroll = (e, targetId) => {
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
     const startPosition = window.pageYOffset;
     const distance = offsetPosition - startPosition;
-    const duration = 1200; // Longer duration for smoother scroll
+    const duration = 1200;
     let startTime = null;
 
     const animation = (currentTime) => {
@@ -33,7 +36,7 @@ const handleSmoothScroll = (e, targetId) => {
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
       const easeProgress = easeInOutCubic(progress);
-      
+
       window.scrollTo(0, startPosition + distance * easeProgress);
 
       if (timeElapsed < duration) {
@@ -46,14 +49,24 @@ const handleSmoothScroll = (e, targetId) => {
 };
 
 export default function RootLayout({ children }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <html lang="en">
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <AppBar 
-            position="sticky" 
-            sx={{ 
+          <AppBar
+            position="sticky"
+            sx={{
               background: "linear-gradient(45deg,rgb(91, 51, 51),rgb(42, 73, 71))",
               opacity: "80%",
               backdropFilter: 'blur(8px)',
@@ -63,11 +76,58 @@ export default function RootLayout({ children }) {
           >
             <Container maxWidth="lg">
               <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <Typography onClick={(e)=>handleSmoothScroll(e,"home")} variant="h6" sx={{ fontWeight: 500, cursor:"pointer" }}>
+                <Typography
+                  onClick={(e) => handleSmoothScroll(e, "home")}
+                  variant="h6"
+                  sx={{ fontWeight: 500, cursor: "pointer" }}
+                >
                   Julia
                 </Typography>
-                <Box sx={{ display: 'flex', gap: 4 }}>
-                  {['About', 'Education', 'Skills', 'Projects', 'Contact'].map((item) => (
+
+                {/* Mobile Menu Icon */}
+                <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                  <IconButton
+                    color="inherit"
+                    edge="start"
+                    onClick={handleMenuOpen}
+                    aria-label="menu"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    onClose={handleMenuClose}
+                    PaperProps={{
+                      sx: {
+                        mt: '8px',
+                        background: "linear-gradient(45deg,rgb(91, 51, 51),rgb(42, 73, 71))",
+                        color: 'white',
+                      },
+                    }}
+                  >
+                    {navItems.map((item) => (
+                      <MenuItem
+                        key={item}
+                        onClick={(e) => {
+                          handleMenuClose();
+                          handleSmoothScroll(e, item.toLowerCase());
+                        }}
+                        sx={{
+                          '&:hover': {
+                            backgroundColor: 'rgba(255,255,255,0.1)',
+                          },
+                        }}
+                      >
+                        {item}
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+
+                {/* Desktop Navigation Links */}
+                <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4 }}>
+                  {navItems.map((item) => (
                     <Link
                       key={item}
                       href={`#${item.toLowerCase()}`}
@@ -100,7 +160,10 @@ export default function RootLayout({ children }) {
               </Toolbar>
             </Container>
           </AppBar>
+
           {children}
+
+          {/* Footer */}
           <Box
             component="footer"
             sx={{
@@ -110,12 +173,16 @@ export default function RootLayout({ children }) {
             }}
           >
             <Container maxWidth="lg">
-              <Typography variant="body2" align="center" sx={{ mb: 2, color: theme.palette.grey[400] }}>
+              <Typography
+                variant="body2"
+                align="center"
+                sx={{ mb: 2, color: theme.palette.grey[400] }}
+              >
                 © {new Date().getFullYear()} Julia. All rights reserved.
               </Typography>
-              <Box sx={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
                 gap: 3,
                 '& .MuiIconButton-root': {
                   color: theme.palette.grey[400],
@@ -127,7 +194,7 @@ export default function RootLayout({ children }) {
                 },
               }}>
                 <IconButton
-                  href="#"
+                  href="https://www.linkedin.com/in/thet-myat-noe-thwin-498ba82a6/"
                   target="_blank"
                   aria-label="LinkedIn"
                   size="medium"
@@ -135,7 +202,7 @@ export default function RootLayout({ children }) {
                   <LinkedInIcon />
                 </IconButton>
                 <IconButton
-                  href="#"
+                  href="https://github.com/juliaizbroke"
                   target="_blank"
                   aria-label="GitHub"
                   size="medium"
@@ -143,12 +210,11 @@ export default function RootLayout({ children }) {
                   <GitHubIcon />
                 </IconButton>
                 <IconButton
-                  href="#"
-                  target="_blank"
-                  aria-label="Twitter"
+                  href="mailto:bellathwin@gmail.com"
+                  aria-label="Email"
                   size="medium"
                 >
-                  <TwitterIcon />
+                  <MailIcon />
                 </IconButton>
               </Box>
             </Container>
@@ -156,5 +222,5 @@ export default function RootLayout({ children }) {
         </ThemeProvider>
       </body>
     </html>
-  )
-} 
+  );
+}

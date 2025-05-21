@@ -46,10 +46,10 @@ const Projects = () => {
     {
       title: 'Heavenly Travels',
       description: 'A small mockup platform of trip.com.',
-      image: '/project3.jpg',
-      technologies: ['JavaScript', 'MongoDB'],
+      image: '/heavenlytravels.png',
+      technologies: ['JavaScript', 'MongoDB', 'Material-UI'],
       liveLink: '#',
-      githubLink: '#',
+      githubLink: 'https://github.com/juliaizbroke/project02',
     },
   ];
 
@@ -120,7 +120,7 @@ const Projects = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Grid container spacing={3} justifyContent="flex-start">
+          <Grid container spacing={3} sx={{ justifyContent: {xs:'center', sm:"flex-start" }}}>
             {projects.map((project, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <motion.div variants={itemVariants}>
@@ -163,7 +163,8 @@ const Projects = () => {
                   >
                     <CardMedia
                       component="img"
-                      height="180"
+                      height={150}
+                      width={300}
                       image={project.image}
                       alt={project.title}
                       sx={{ 
@@ -175,8 +176,8 @@ const Projects = () => {
                       flexGrow: 1, 
                       display: 'flex', 
                       flexDirection: 'column',
-                      position: 'relative',
                       zIndex: 1,
+                      height:"200px"
                     }}>
                       <Typography
                         variant="h5"

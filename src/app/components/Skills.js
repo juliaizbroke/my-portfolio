@@ -27,15 +27,22 @@ const Skills = () => {
     },
   };
 
-  const skills = [
-    { name: 'HTML/CSS', category: 'Frontend' },
-    { name: 'JavaScript', category: 'Frontend' },
-    { name: 'React', category: 'Frontend' },
-    { name: 'Node.js', category: 'Backend' },
-    { name: 'TypeScript', category: 'Frontend' },
-    { name: 'Python', category: 'Backend' },
-    { name: 'Natual Language Processing', category: 'NLP'}
-  
+  const categorizedSkills = {
+    Frontend: ['HTML/CSS', 'JavaScript/TypeScript', 'React'],
+    Backend: ['Node.js', 'Flask', 'Next.js'],
+    Languages: ['Python', 'Java', 'C#'],
+    Database: ['MongoDB', 'PostgreSQL', 'NeonDB'],
+    Tools: ['Git', 'Figma', 'Postman'],
+    AI: ['Natural Language Processing', 'Machine Learning'],
+  };
+
+  const experiences = [
+    {
+      title: 'Fullstack Intern',
+      company: 'NFQ',
+      period: 'April 2025 - May 2025 (2 months)',
+      description: 'Contributed to the development of NFQ Thailand landing website as well as the internal system for NFQ Thailand.',
+    },
   ];
 
   return (
@@ -48,7 +55,7 @@ const Skills = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Background decorative elements */}
+      {/* Background effects */}
       <Box
         sx={{
           position: 'absolute',
@@ -64,6 +71,7 @@ const Skills = () => {
       />
 
       <Container maxWidth="lg">
+        {/* Title Section */}
         <Box sx={{ mb: 6 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
             <Typography
@@ -75,7 +83,7 @@ const Skills = () => {
                 mr: 2,
               }}
             >
-              #Skills
+              #Skills & Experience
             </Typography>
             <Box
               sx={{
@@ -95,89 +103,67 @@ const Skills = () => {
               ml: 2,
             }}
           >
-            Technical Expertise & Tools
+            Technical Expertise & Industry Experience
           </Typography>
         </Box>
 
-        <motion.div
+        {/* Skills Section */}
+         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Grid container spacing={2} justifyContent="flex-start">
-            {skills.map((skill, index) => (
-              <Grid item xs={6} sm={4} md={3} key={index}>
+          <Grid container spacing={4}>
+            {Object.entries(categorizedSkills).map(([category, skills], idx) => (
+              <Grid item xs={12} sm={6} md={4} key={idx}>
                 <motion.div variants={itemVariants}>
                   <Box
                     sx={{
-                      p: 2,
-                      width: '180px',
-                      height: '100px',
-                      mx: 'auto',
+                      p: 3,
                       background: 'rgba(255, 255, 255, 0.03)',
                       backdropFilter: 'blur(10px)',
-                      borderRadius: 2,
+                      borderRadius: 3,
                       border: '1px solid rgba(255, 255, 255, 0.1)',
                       transition: 'all 0.3s ease-in-out',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
                       '&:hover': {
                         transform: 'translateY(-5px)',
                         background: 'rgba(255, 255, 255, 0.05)',
-                        '&::before': {
-                          transform: 'scale(1)',
-                          opacity: 0.1,
-                        },
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                        opacity: 0,
-                        transition: 'all 0.3s ease-in-out',
-                        transform: 'scale(0.8)',
-                        zIndex: 0,
                       },
                     }}
                   >
-                    <Box 
-                      sx={{ 
-                        position: 'relative', 
-                        zIndex: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 0.5
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontWeight: 700,
+                        color: theme.palette.primary.main,
+                        fontSize: '1rem',
+                        mb: 1,
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          fontWeight: 600,
-                          color: theme.palette.grey[100],
-                          fontSize: { xs: '0.85rem', md: '0.9rem' },
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {skill.name}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        sx={{
-                          color: theme.palette.grey[400],
-                          fontWeight: 500,
-                          fontSize: { xs: '0.7rem', md: '0.75rem' },
-                        }}
-                      >
-                        {skill.category}
-                      </Typography>
+                      {category}
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                      {skills.map((skill, i) => (
+                        <Typography
+                          key={i}
+                          variant="body2"
+                          sx={{
+                            color: theme.palette.grey[100],
+                            fontSize: '0.9rem',
+                            pl: 1.5,
+                            position: 'relative',
+                            '&::before': {
+                              content: '"•"',
+                              position: 'absolute',
+                              left: 0,
+                              color: theme.palette.secondary.main,
+                            },
+                          }}
+                        >
+                          {skill}
+                        </Typography>
+                      ))}
                     </Box>
                   </Box>
                 </motion.div>
@@ -185,9 +171,68 @@ const Skills = () => {
             ))}
           </Grid>
         </motion.div>
+
+        {/* Experience Section */}
+        <Box sx={{ mt: 8 }}>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <Typography
+              variant="h4"
+              sx={{
+                color: theme.palette.grey[200],
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+                fontWeight: 600,
+                mb: 3,
+                ml: 1,
+              }}
+            >
+              Experience
+            </Typography>
+
+            <Grid container spacing={3}>
+              {experiences.map((exp, idx) => (
+                <Grid item xs={12} sm={6} key={idx}>
+                  <motion.div variants={itemVariants}>
+                    <Box
+                      sx={{
+                        p: 3,
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        backdropFilter: 'blur(10px)',
+                        borderRadius: 2,
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        transition: 'all 0.3s ease-in-out',
+                        '&:hover': {
+                          transform: 'translateY(-5px)',
+                          background: 'rgba(255, 255, 255, 0.05)',
+                        },
+                      }}
+                    >
+                      <Typography variant="h6" sx={{ color: theme.palette.grey[100], fontWeight: 600 }}>
+                        {exp.title}
+                      </Typography>
+                      <Typography variant="subtitle2" sx={{ color: theme.palette.grey[400] }}>
+                        {exp.company} | {exp.period}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: theme.palette.grey[300], mt: 1, fontSize: '0.85rem' }}
+                      >
+                        {exp.description}
+                      </Typography>
+                    </Box>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </motion.div>
+        </Box>
       </Container>
     </Box>
   );
 };
 
-export default Skills; 
+export default Skills;

@@ -124,14 +124,14 @@ const Education = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <Grid container spacing={3} justifyContent="flex-start">
+          <Grid container spacing={3} sx={{ justifyContent: "center" }}>
             {educationItems.map((item, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid item xs={12} sm={6} md={3} key={index}>
                 <motion.div variants={itemVariants}>
                   <Box
                     sx={{
                       p: 3,
-                      width: "280px",
+                      width: {xs:"350px",sm:"300px",md:"250px"},
                       height: "200px",
                       mx: "auto",
                       background: "rgba(255, 255, 255, 0.03)",

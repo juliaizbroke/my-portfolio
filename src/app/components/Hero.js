@@ -26,6 +26,39 @@ const Hero = () => {
       },
     },
   };
+  const easeInOutCubic = (t) => {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  };
+
+  const handleSmoothScroll = (e, targetId) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId.toLowerCase());
+    if (targetElement) {
+      const headerOffset = 80;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+      const startPosition = window.pageYOffset;
+      const distance = offsetPosition - startPosition;
+      const duration = 1200; // Longer duration for smoother scroll
+      let startTime = null;
+
+      const animation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easeProgress = easeInOutCubic(progress);
+
+        window.scrollTo(0, startPosition + distance * easeProgress);
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
+    }
+  };
 
   return (
     <Box
@@ -154,18 +187,19 @@ const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button
+                    onClick={(e) => handleSmoothScroll(e, "contact")}
                     variant="contained"
                     color="primary"
-                    size="large"
                     href="#contact"
                     sx={{
-                      px: 4,
+                      px: {xs:2, md: 4},
                       py: 1.5,
                       borderRadius: 2,
                       background: "linear-gradient(45deg, #FF6B6B, #4ECDC4)",
                       "&:hover": {
                         background: "linear-gradient(45deg, #FF5252, #3DBEB6)",
                       },
+                      fontSize: {xs:"15px", md:"18px"},
                     }}
                   >
                     Contact Me
@@ -177,12 +211,13 @@ const Hero = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button
+                    onClick={(e) => handleSmoothScroll(e, "projects")}
                     variant="outlined"
                     color="primary"
                     size="large"
                     href="#projects"
                     sx={{
-                      px: 4,
+                      px: {xs:2, md: 4},
                       py: 1.5,
                       borderRadius: 2,
                       borderColor: "#4ECDC4",
@@ -191,6 +226,7 @@ const Hero = () => {
                         borderColor: "#3DBEB6",
                         backgroundColor: "rgba(78, 205, 196, 0.1)",
                       },
+                      fontSize: {xs:"15px", md:"18px"},
                     }}
                   >
                     View Projects
