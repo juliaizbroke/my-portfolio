@@ -12,6 +12,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import MailIcon from '@mui/icons-material/Mail';
 import theme from './theme';
+import { Analytics } from "@vercel/analytics/next"
 
 const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
 
@@ -69,6 +70,7 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#000000" />
       </head>
       <body>
+        <Analytics />
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <AppBar
