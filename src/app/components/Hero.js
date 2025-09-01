@@ -96,7 +96,7 @@ const Hero = () => {
             >
               <Box
                 component={"img"}
-                src="/mypicture.jpg"
+                src="/noenoe.jfif"
                 sx={{
                   display: "flex",
                   width: "200px",
