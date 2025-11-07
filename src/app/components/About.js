@@ -93,17 +93,20 @@ const About = () => {
                 <Typography
                   variant="body1"
                   sx={{
-                    fontSize: { xs: "0.9rem", md: "1rem" },
+                    fontSize: { xs: "0.95rem", md: "1rem" },
                     lineHeight: 1.8,
                     color: theme.palette.grey[300],
                     mb: 3,
                   }}
                 >
-                  I am a passionate software engineer with a strong foundation in computer science. I have
-                  a keen interest in web development, particularly in creating
-                  dynamic and responsive user interfaces. I am proficient in
-                  various programming languages and frameworks, and I am always
-                  eager to learn new technologies to enhance my skills.
+                  I’m a driven software engineer who loves building polished, high‑performance web
+                  applications. My current focus is becoming a confident full‑stack developer with
+                  deep expertise in TypeScript and modern JavaScript frameworks — Next.js is my
+                  go‑to for building fast, user‑centered experiences. I design thoughtful, responsive
+                  interfaces and pair them with robust backends; I have hands‑on experience modeling
+                  data with SQL/PostgreSQL and deploying services on AWS. I enjoy tackling end‑to‑end
+                  challenges, optimizing for usability and scale, and continuously learning new tools
+                  and patterns to deliver better software.
                 </Typography>
               </motion.div>
             </Grid>

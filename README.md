@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Julia's Portfolio
 
-## Getting Started
+This repository contains a modern personal portfolio built with Next.js and React. It showcases projects, skills, education, and contact information—designed to be fast, responsive, and easy to extend.
 
-First, run the development server:
+## Highlights
+
+- Clean, responsive UI built with React and Material UI
+- Smooth scroll and entrance animations using Framer Motion
+- Tailwind configuration included for utility-first styling
+- TypeScript-ready (project contains `tsconfig.json`) and Next.js configuration
+- Backend-ready structure and experience notes: SQL/PostgreSQL for data modeling and AWS for deployments
+
+## Tech stack
+
+- Next.js (React)
+- Material UI (MUI)
+- Framer Motion
+- Tailwind CSS
+- PostgreSQL / SQL (used for data modeling in projects)
+- AWS (deployment and cloud services experience)
+
+## Local development
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open the site
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit http://localhost:3000 in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build for production
 
-## Learn More
+```bash
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure (important files)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/` — main Next.js app directory
+	- `components/` — React components used across the site (About, Hero, Projects, Skills, Contact, etc.)
+	- `api/` — API routes (example: contact form route)
+- `public/` — static assets (images, icons)
+- `next.config.ts`, `tailwind.config.js`, `postcss.config.js` — build and styling configs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment & deployment notes
 
-## Deploy on Vercel
+- This portfolio is suitable for static or server-side deployment (Vercel, Netlify, or an AWS-based deployment).
+- If you integrate server-side APIs or store submissions, use environment variables for DB credentials and cloud keys. Do not commit secrets to the repo.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Live site: https://www.juliathwin.me/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing & customization
+
+- To add a new project card, create a component and import it into `src/app/components/Projects.js`.
+- To add skill badges or icons, update `About.js` or `Skills.js` and include any images in `public/`.
+
+## Contact
+
+If you'd like to collaborate or hire me, use the contact form in the site or reach out via email (add your preferred contact method here).
+
+---
+
+If you'd like, I can also:
+- Add a downloadable resume button or quick CTA under the About section.
+- Add badges/icons for TypeScript, Next.js, PostgreSQL, and AWS to the Skills section.
+- Run a quick typecheck/lint step to verify there are no syntax issues after the recent edit.

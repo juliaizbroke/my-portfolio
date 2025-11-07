@@ -44,12 +44,12 @@ const Projects = () => {
       githubLink: 'https://github.com/juliaizbroke/FitHub',
     },
     {
-      title: 'Heavenly Travels',
-      description: 'A small mockup platform of trip.com.',
-      image: '/heavenlytravels.png',
-      technologies: ['JavaScript', 'MongoDB', 'Material-UI'],
-      liveLink: '#',
-      githubLink: 'https://github.com/juliaizbroke/project02',
+      title: 'AUREX',
+      description: 'An NLP-powered system to automate exam paper creation from one Excel question bank source, integrating duplicate detection, grammar checking, and automatic formatting.',
+      image: '/aurex.png',
+      technologies: ['TypeScript', 'Flask', 'SBERT', 'LangTool'],
+      liveLink: '',
+      githubLink: 'https://github.com/juliaizbroke/SeniorProject1',
     },
   ];
 
@@ -127,7 +127,7 @@ const Projects = () => {
                   <Card
                     sx={{
                       width: '320px',
-                      height: '420px',
+                      height: '450px',
                       mx: 'auto',
                       background: 'rgba(255, 255, 255, 0.03)',
                       backdropFilter: 'blur(10px)',
@@ -234,20 +234,23 @@ const Projects = () => {
                       p: 2,
                       justifyContent: 'space-between',
                     }}>
-                      <Button
-                        size="small"
-                        href={project.liveLink}
-                        target="_blank"
-                        sx={{
-                          color: theme.palette.primary.main,
-                          fontSize: { xs: '0.75rem', md: '0.8rem' },
-                          '&:hover': {
-                            backgroundColor: 'rgba(78, 205, 196, 0.1)',
-                          },
-                        }}
-                      >
-                        Live Demo
-                      </Button>
+                      {project.liveLink ? (
+                        <Button
+                          size="small"
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          sx={{
+                            color: theme.palette.primary.main,
+                            fontSize: { xs: '0.75rem', md: '0.8rem' },
+                            '&:hover': {
+                              backgroundColor: 'rgba(78, 205, 196, 0.1)',
+                            },
+                          }}
+                        >
+                          Live Demo
+                        </Button>
+                      ) : null}
                       <Button
                         size="small"
                         href={project.githubLink}
