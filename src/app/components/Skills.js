@@ -28,20 +28,21 @@ const Skills = () => {
   };
 
   const categorizedSkills = {
-    Frontend: ['HTML/CSS', 'JavaScript/TypeScript', 'React'],
-    Backend: ['Node.js', 'Flask', 'Next.js'],
-    Languages: ['Python', 'Java', 'C#'],
-    Database: ['MongoDB', 'PostgreSQL', 'NeonDB'],
-    Tools: ['Git', 'Figma', 'Postman'],
-    AI: ['Natural Language Processing', 'Machine Learning'],
+    Frontend: ['HTML/CSS', 'JavaScript/TypeScript', 'React.js', 'Next.js'],
+    Backend: ['Node.js', 'Flask', 'REST APIs'],
+    Languages: ['Python', 'Java', 'C#', 'Kotlin'],
+    Database: ['RBDMS - SQL, PostgreSQL','NoSQL - MongoDB'],
+    MobileDevelopment: ['Flutter', 'Kotlin'],
+    CloudInfrastructure: ['AWS', 'DigitalOcean', 'Google Cloud Platform'],
+    Others: ['Git', 'Figma', 'Postman', 'Docker', 'Natural Language Processing', 'Machine Learning'],
   };
 
   const experiences = [
     {
       title: 'Fullstack Intern',
-      company: 'NFQ',
+      company: 'Gradion',
       period: 'April 2025 - May 2025 (2 months)',
-      description: 'Contributed to the development of NFQ Thailand landing website as well as the internal system for NFQ Thailand.',
+      description: 'Contributed to the development of Gradion Thailand landing website as well as participated in client projects, gaining hands-on experience in fullstack development.',
     },
   ];
 

@@ -51,6 +51,30 @@ const Projects = () => {
       liveLink: '',
       githubLink: 'https://github.com/juliaizbroke/SeniorProject1',
     },
+    {
+      title: 'DTG-FieldLink',
+      description: 'A custom-built Field Service Management System with two integrated platforms for DTG Co. Ltd.',
+      image: '/dtg-fieldlink.png',
+      technologies: ['Next.js', 'Flutter', 'Node.js', 'Firebase', ' DigitalOcean', 'PostgreSQL'],
+      liveLink: '',
+      githubLink: 'https://github.com/ZweLaPyae/DTG_FieldLink',
+    },
+    {
+      title: 'Huntopia',
+      description: 'A campus exploration android app that encourages students and visitors to discover university buildings by scanning QR codes to unlock achievement badges.',
+      image: '/huntopia.png',
+      technologies: ['Kotlin', 'Firebase'],
+      liveLink: '',
+      githubLink: 'https://github.com/juliaizbroke/Huntopia ',
+    },
+    {
+      title: 'Keybound Depths',
+      description: 'A 2.5D puzzle-solving adventure game where players navigate through mysterious depths, solving intricate puzzles to progress through challenging stages.',
+      image: '/keybound-depths.png',
+      technologies: ['Unity', 'C#'],
+      liveLink: 'https://h4rryzlp.itch.io/keybound-depths',
+      githubLink: 'https://github.com/juliaizbroke/GameDevPrj ',
+    },
   ];
 
   return (
@@ -237,7 +261,7 @@ const Projects = () => {
                       {project.liveLink ? (
                         <Button
                           size="small"
-                          href={project.liveLink}
+                          href={project.liveLink} 
                           target="_blank"
                           rel="noopener noreferrer"
                           sx={{
